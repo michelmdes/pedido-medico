@@ -8,7 +8,7 @@ Desafio Dasa - API REST com as funcionalidades de cadastro de paciente, medico, 
  - Swagger 2.9.2
  
 ## Estrutura
-![](/src/main/resources/DER Pedido Medico.png)
+![](/src/main/resources/DER_Pedido_Medico.png)
 
 ## Documentação
 A documentação dos endpoints é gerada automaticamente através do Swagger, com as seguintes vantagens:
