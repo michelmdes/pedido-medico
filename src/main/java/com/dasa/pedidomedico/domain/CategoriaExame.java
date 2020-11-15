@@ -17,7 +17,6 @@ public class CategoriaExame extends GenericDomain<Long> {
 	@NotNull
 	private String nome;
 
-	@JsonIgnore
 	@OneToMany(mappedBy="categoriaExame")
 	private List<Exame> exames = new ArrayList<>();
 

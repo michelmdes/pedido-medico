@@ -18,6 +18,7 @@ public class Exame extends GenericDomain<Long> {
 	@NotNull
 	private String nome;
 
+	@JsonIgnore
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_categoria")

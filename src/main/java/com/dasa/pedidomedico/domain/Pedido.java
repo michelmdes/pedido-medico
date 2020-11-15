@@ -14,7 +14,6 @@ public class Pedido extends GenericDomain<Long> {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@NotNull
 	private Date dtValidade;
 	private String observacao;
 
