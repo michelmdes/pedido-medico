@@ -18,9 +18,22 @@ A documentação dos endpoints é gerada automaticamente através do Swagger, co
  
 Link: [ApplicationPath]/swagger-ui.html
 
-Link Heroku: https://pedido-medico.herokuapp.com/swagger-ui.html#/pedido-resource
+Link aplicação Heroku:
+
+ - Backend: https://pedido-medico.herokuapp.com/swagger-ui.html#/pedido-resource
+ - Gerenciador do banco de dados: https://pedido-medico.herokuapp.com/h2-console
 
 ![](/src/main/resources/Documentacao_swagger.png)
+ 
+### Acessando o gerenciador do banco de dados H2 
+Para acessar o gerenciador do banco H2:
+ - Link: [ApplicationPath]/h2-console
+ - Driver Class: org.h2.Driver
+ - JDBC URL: jdbc:h2:mem:testdb
+ - User Name: sa
+ - Password: [vazio]
+
+![](/src/main/resources/Config_banco_H2.png)
 
 ## Autor
 Michel Mendes
