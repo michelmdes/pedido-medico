@@ -5,7 +5,6 @@ import com.dasa.pedidomedico.domain.Pedido;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -40,6 +39,14 @@ public class PedidoResource {
 	@ApiOperation(value = "Lista todos os pedidos de um medico")
 	public ResponseEntity<List<Pedido>> findByMedicoId(@PathVariable Long idMedico) {
 		List<Pedido> pedidos = business.findByMedicoId(idMedico);
+		return ResponseEntity.ok().body(pedidos);
+	}
+
+	@GetMapping(value="/paciente-medico")
+	@ApiOperation(value = "Lista todos os pedidos de um paciente e/ou medico")
+	public ResponseEntity<List<Pedido>> findByPacienteIdOrMedicoId(@RequestParam(value="idPaciente", required = false) Long idPaciente,
+																   @RequestParam(value="idMedico", required = false) Long idMedico) {
+		List<Pedido> pedidos = business.findByPacienteIdOrMedicoId(idPaciente, idMedico);
 		return ResponseEntity.ok().body(pedidos);
 	}
 

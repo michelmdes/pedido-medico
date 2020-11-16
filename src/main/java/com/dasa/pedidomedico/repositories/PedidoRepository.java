@@ -15,4 +15,6 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
     List<Pedido> findByMedico(Medico medico);
 
+    List<Pedido> findByPacienteAndMedico(Paciente paciente, Medico medico);
+
 }

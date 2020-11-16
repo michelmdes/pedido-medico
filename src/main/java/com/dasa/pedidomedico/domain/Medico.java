@@ -34,6 +34,10 @@ public class Medico extends GenericDomain<Long> {
 	public Medico() {
 	}
 
+	public Medico(Long id) {
+		this.id = id;
+	}
+
 	public Medico(@NotNull String nome, @NotNull Sexo sexo, @NotNull String numeroConselho, @NotNull String estadoConselho, @NotNull String tipoConselho, Endereco endereco) {
 		this.nome = nome;
 		this.sexo = sexo.getCodigo();

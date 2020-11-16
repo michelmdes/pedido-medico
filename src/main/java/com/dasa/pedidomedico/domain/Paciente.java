@@ -33,6 +33,10 @@ public class Paciente extends GenericDomain<Long> {
 	public Paciente() {
 	}
 
+	public Paciente(Long id) {
+		this.id = id;
+	}
+
 	public Paciente(@NotNull String nome, @NotNull Date dtNascimento, @NotNull Sexo sexo, String nomeMae, String telefone,
 					String email, String rg, @Size(min = 11, max = 11) String cpf, Endereco endereco) {
 		this.nome = nome;
