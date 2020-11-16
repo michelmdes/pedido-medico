@@ -3,11 +3,13 @@ package com.dasa.pedidomedico;
 import com.dasa.pedidomedico.domain.*;
 import com.dasa.pedidomedico.domain.enums.Sexo;
 import com.dasa.pedidomedico.repositories.*;
+import com.dasa.pedidomedico.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -38,7 +40,7 @@ public class PedidoMedicoApplication implements CommandLineRunner {
 		persistirCargaInicial();
 	}
 
-	private void persistirCargaInicial() {
+	private void persistirCargaInicial() throws ParseException {
 
 		Estado est1 = new Estado("Bahia");
 		Estado est2 = new Estado("São Paulo");
@@ -50,22 +52,23 @@ public class PedidoMedicoApplication implements CommandLineRunner {
 		Endereco e1 = new Endereco("Av José Lopes Lázaro", "490", "Apto 165 Torre 2", "Presidente Altino", "06210030", c2);
 		Endereco e2 = new Endereco("Rua Vicente Celestino", "530", "Apto 303", "Jardim", "38220834", c1);
 		Endereco e3 = new Endereco("Av dos Autonomistas", "150", "Ed. Paris", "Vila Yara", "06210030", c3);
+		Endereco e4 = new Endereco("Av das Naçoes Unidas", "1000", "Cond SP", "Centro", "06210030", c3);
 
 		est1.getCidades().add(c1);
 		est2.getCidades().addAll(Arrays.asList(c2, c3));
 
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
-		enderecoRepository.saveAll(Arrays.asList(e1, e2, e3));
+		enderecoRepository.saveAll(Arrays.asList(e1, e2, e3, e4));
 
-		Date dtNasc = new Date();
-		Paciente p1 = new Paciente("Michel Mendes", dtNasc, Sexo.MASCULINO, "Valeria Moura", "71 988716861", "michelmdes@gmail.com", "2345678", "11111111111", e1);
-		Paciente p2 = new Paciente("Maria Mota", dtNasc, Sexo.FEMININO, "Creuza Mota", "71 98888888", "maria@gmail.com", "8765432", "22222222222", e2);
+		Paciente p1 = new Paciente("Michel Mendes", DateUtils.parseDate("03/09/1990", "dd/MM/yyyy"), Sexo.MASCULINO, "Valeria Moura", "71 988716861", "michelmdes@gmail.com", "2345678", "11111111111", e1);
+		Paciente p2 = new Paciente("Maria Mota", DateUtils.parseDate("03/12/1992", "dd/MM/yyyy"), Sexo.FEMININO, "Creuza Mota", "71 98888888", "maria@gmail.com", "8765432", "22222222222", e2);
+		Paciente p3 = new Paciente("Ana Batista", DateUtils.parseDate("23/02/1974", "dd/MM/yyyy"), Sexo.OUTRO, "Noemia Assis", "11 98888888", "noemia@gmail.com", "222222222", "33333333333", e3);
 
-		pacienteRepository.saveAll(Arrays.asList(p1, p2));
+		pacienteRepository.saveAll(Arrays.asList(p1, p2, p3));
 
-		Medico m1 = new Medico("Felipe Santos Caliari", Sexo.MASCULINO, "0012", "SP", "CRM", e3);
-		Medico m2 = new Medico("Alice Santos Caliari", Sexo.FEMININO, "6238", "SP", "CRM", e3);
+		Medico m1 = new Medico("Felipe Santos Caliari", Sexo.MASCULINO, "0012", "SP", "CRM", e4);
+		Medico m2 = new Medico("Alice Santos Caliari", Sexo.FEMININO, "6238", "SP", "CRM", e4);
 
 		medicoRepository.saveAll(Arrays.asList(m1, m2));
 

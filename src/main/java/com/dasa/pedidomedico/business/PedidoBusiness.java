@@ -5,6 +5,7 @@ import com.dasa.pedidomedico.domain.Medico;
 import com.dasa.pedidomedico.domain.Paciente;
 import com.dasa.pedidomedico.domain.Pedido;
 import com.dasa.pedidomedico.repositories.PedidoRepository;
+import com.dasa.pedidomedico.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,11 +81,7 @@ public class PedidoBusiness extends GenericBusiness<Pedido, Long>{
 	 * @return dataValidade
 	 */
 	private Date gerarDataValidade() {
-		return addDias(new Date(), 1);
+		return DateUtils.addDias(new Date(), 1);
 	}
 
-	private Date addDias(Date data, int qtdDias) {
-		long dateTime = data.getTime() + (1000 * 60 * 60 * 24 * qtdDias);
-		return new Date(dateTime);
-	}
 }
