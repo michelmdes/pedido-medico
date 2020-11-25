@@ -1,6 +1,6 @@
 # Pedido Médico - API REST
 
-Desafio Dasa - API REST com as funcionalidades de cadastro de paciente, medico, exame e pedido de exame
+API REST com as funcionalidades de cadastro de paciente, medico, exame e pedido de exame
 
 ## Tecnologias
  - SpringBoot 2.3.3
